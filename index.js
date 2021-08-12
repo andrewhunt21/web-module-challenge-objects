@@ -15,11 +15,15 @@ The function should:
   Example createMenuItem('tacos', 8, 'Lunch') should return {name: 'tacos', price: 8, category: 'Lunch'}
 */
 // pass 3 params - name price category
-function createMenuItem(/*Your code here*/){
-    /*Your code here*/
-
-    // return and object with those 3 parameters
+function createMenuItem(name, price, category){
+  return {
+    name: name,
+    price: price,
+    category: category,
+  }
+    // return an object with those 3 parameters
 }
+console.log('task 1a', createMenuItem('tacos', 8, 'Lunch'));
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 1b: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
 Invoke your function!
@@ -31,7 +35,9 @@ Test your createMenuItems function by doing the following:
   For example: createMenuItem("pizza",5,"lunch") would return this as the object: {name:"Pizza",price:5,category:"lunch"}
 */
 // not being graded jut invoking 1a three times
-
+console.log('task 1b', createMenuItem('fish and chips', 11, 'Lunch'));
+console.log('task 1b', createMenuItem('prime rib', 29, 'Dinner'));
+console.log('task 1b', createMenuItem('coffee', 2, 'Drinks'));
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 2: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
 You're having a lunch special! 25% off for teachers and students, 10% off for everyone else. Add a method to the 
@@ -50,8 +56,17 @@ const burger = {
   price: 18, 
   category: "Lunch", 
   // method called disscount and giving teachers and students a discount and public a different discount - you need to use 'this' when referencing a key inside a method - this.price you are not updating the value of price you are just returning the discouted price
+  discount: function(who){
+    if (who === "teacher" || who === "student"){
+      return this.price * 0.75;
+    }else if (who === "public"){
+      return this.price * 0.90;
+    }else{
+      return 'no discount for you';
+    }
+  }
 }
-
+console.log('task 2', burger.discount("public"))
 
 
 ///////////////Reviews (MVP)///////////////////
@@ -70,7 +85,7 @@ const reviews = [
 Using the reviews array above:
   1. log only Julius' feedback to the console - no function needed 
 */
-
+console.log('task 3', reviews[5].feedback);
 // not being greaded - you are just console logging
 
 
@@ -80,7 +95,7 @@ Reyna's feedback is missing! Use what you know to do the following: (no function
   2. log the reviews array to the console to check your work
 */
 reviews[7].feedback = 'this place is chill with really cool people, great for getting work done on weekdays';
-console.log(reviews);
+console.log('task 4', reviews);
 
 
 
@@ -94,10 +109,12 @@ Write a function that creates an object with name, rating, feedback, add the new
   4. should return the resulting array
 */
 // pass array, name, rating, feedback as params
-function addReview(/*Your Code Here */){
-  /*Your Code Here */
+function addReview(array, name, rating, feedback){
+  array.push({name, rating, feedback});
+  return array;
   // push the object to the end of the array and return the resulting array
 }
+console.log('task 5', addReview(reviews, 'Daniela', 5, 'Beautiful atmosphere and wonderful vegan options!'));
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 6: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
 Write a function to return a review based on the index of the review in the array.
@@ -110,11 +127,12 @@ Use the getReviewByIndex function below to do the following:
 */
 
 // array, index
-function getReviewByIndex(/*Your code here*/) {
+function getReviewByIndex(array, index) {
   /*Your code here*/
   // return the string "{array[index].{name} gave the restaurant a {rating} star review, and their feedback was: {feedback}"
+  return `${array[index].name} gave the restaurant a ${array[index].rating} star review, and their feedback was: ${array[index].feedback}`
 }
-
+console.log('task 6', getReviewByIndex(reviews, 0));
 
   
 
@@ -130,12 +148,12 @@ Use the getLastReview function below to do the following:
 */
 
 // receive an array as a param
-function getLastReview(/*Your code here*/) {
+function getLastReview(array) {
   /*Your code here*/
-
+  return `${array[array.length - 1].name} gave the restaurant a ${array[array.length -1].rating} star review, and their feedback was: ${array[array.length -1].feedback}`
   // array.length -1 will be useful here
 } 
-
+console.log('task 7', getLastReview(reviews));
 
 
 ///////////////🍔☕️🍽 STRETCH🍔☕️🍽////////////////////
